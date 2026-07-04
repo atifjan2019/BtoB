@@ -51,7 +51,6 @@
 
   <!-- Book a Table + mobile -->
   <div class="navbar-end gap-2">
-    <a href="{{ route('order') }}" class="btn btn-outline btn-sm hidden md:inline-flex tracking-widest text-[11px] uppercase">Order Online</a>
     <a href="{{ route('reserve') }}" class="btn btn-primary btn-sm hidden sm:inline-flex tracking-widest text-[11px] uppercase">Book a Table</a>
     <div class="dropdown dropdown-end lg:hidden">
       <label tabindex="0" class="btn btn-ghost btn-circle">

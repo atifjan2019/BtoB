@@ -3,23 +3,42 @@
 @section('content')
 
 {{-- HERO --}}
-<div class="hero hero-vignette min-h-screen relative" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&q=80&w=2000&auto=format&fit=crop')">
-  <div class="hero-overlay bg-black/55"></div>
-  <div class="hero-content site-container relative z-10 text-center text-neutral-content py-20">
-    <div class="max-w-3xl">
-      <img src="{{ asset('assets/mark.png') }}" alt="" class="w-28 h-28 object-contain mx-auto mb-6">
-      <p class="section-kicker mb-5">Est. Bombay · Reborn in London</p>
-      <h1 class="display-serif text-6xl lg:text-7xl font-light mb-6">
-        Two Cities.<br><em class="text-primary">One Table.</em>
+<section class="home-hero relative overflow-hidden">
+  <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&q=80&w=2200&auto=format&fit=crop"
+       alt="" class="home-hero-image">
+  <div class="home-hero-scrim"></div>
+
+  <div class="site-container home-hero-content relative z-10">
+    <div class="home-hero-copy">
+      <p class="section-kicker mb-5">Bombay spice · British ceremony</p>
+      <h1 class="display-serif home-hero-title font-light">
+        Fine Indian dining, made for unhurried evenings.
       </h1>
-      <p class="text-neutral-content/80 font-light leading-relaxed mb-10 max-w-xl mx-auto">A journey from the spice bazaars of Bombay to the grand dining rooms of Britain, reimagined with a sharper, contemporary dining room sensibility.</p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a href="{{ route('reserve') }}" class="btn btn-primary btn-lg tracking-widest text-xs uppercase">Reserve a Table</a>
-        <a href="{{ route('menu') }}" class="btn btn-outline btn-lg tracking-widest text-xs uppercase">Explore Menu</a>
+      <p class="home-hero-text">
+        Fire-led plates, hand-ground masalas and old family recipes, served with the polish of a modern dining room.
+      </p>
+      <div class="home-hero-actions">
+        <a href="{{ route('reserve') }}" class="btn btn-primary btn-lg">Book a Table</a>
+        <a href="{{ route('order') }}" class="btn btn-outline btn-lg">Order Online</a>
+      </div>
+    </div>
+
+    <div class="home-hero-meta" aria-label="Restaurant highlights">
+      <div>
+        <span>Open Daily</span>
+        <strong>10am - 11pm</strong>
+      </div>
+      <div>
+        <span>Kitchen</span>
+        <strong>Tandoor &amp; Dum</strong>
+      </div>
+      <div>
+        <span>Location</span>
+        <strong>Royton, Oldham</strong>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 {{-- PHILOSOPHY --}}
 <section class="site-container py-24 text-center">
