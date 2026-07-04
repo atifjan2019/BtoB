@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title', 'About — Bombay to Britain')
 @section('content')
-<div class="py-20 px-6 min-h-screen">
+<div class="site-container py-20 min-h-screen">
   <div class="text-center mb-16">
     <p class="tracking-widest uppercase text-primary text-xs mb-4">Our Story</p>
     <h1 class="text-6xl font-light" style="font-family:'Cormorant Garamond',serif">From Bombay, With Love</h1>
   </div>
-  <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
     <figure class="overflow-hidden rounded-lg border border-base-300">
       <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?fm=jpg&q=80&w=1100&auto=format&fit=crop" alt="" class="w-full h-[460px] object-cover">
     </figure>
@@ -16,7 +16,7 @@
       <p class="text-sm font-light leading-loose text-base-content/70">Every plate we serve is a passage across that distance: familiar yet transformed, humble yet refined.</p>
     </div>
   </div>
-  <div class="max-w-5xl mx-auto">
+  <div>
     <div class="divider"></div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
       @foreach([

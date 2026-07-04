@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Reserve a Table — Bombay to Britain')
 @section('content')
-<div class="py-20 px-6 min-h-screen"
+<div class="site-container py-20 min-h-screen"
      x-data="{
        tables: [],
        selectedTable: null,
@@ -19,7 +19,7 @@
        get availCount() { return this.tables.filter(t=>!t.booked).length; },
        get selT() { return this.tables.find(t=>t.id===this.selectedTable)||null; }
      }">
-  <div class="max-w-4xl mx-auto">
+  <div>
     <div class="text-center mb-12">
       <p class="tracking-widest uppercase text-primary text-xs mb-4">Reservations</p>
       <h1 class="text-5xl font-light" style="font-family:'Cormorant Garamond',serif">Book Your Table</h1>

@@ -5,7 +5,7 @@
 {{-- HERO --}}
 <div class="hero min-h-screen" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&q=80&w=2000&auto=format&fit=crop')">
   <div class="hero-overlay bg-black/65"></div>
-  <div class="hero-content text-center text-neutral-content py-20">
+  <div class="hero-content site-container text-center text-neutral-content py-20">
     <div class="max-w-2xl">
       <img src="{{ asset('assets/mark.png') }}" alt="" class="w-28 h-28 object-contain mx-auto mb-6">
       <p class="tracking-[8px] uppercase text-primary text-xs mb-5">Est. Bombay · Reborn in London</p>
@@ -22,16 +22,18 @@
 </div>
 
 {{-- PHILOSOPHY --}}
-<section class="py-24 px-6 text-center max-w-4xl mx-auto">
+<section class="site-container py-24 text-center">
+  <div class="max-w-4xl mx-auto">
   <p class="tracking-widest uppercase text-primary text-xs mb-5">Our Philosophy</p>
   <blockquote class="text-3xl font-light leading-relaxed text-base-content/90" style="font-family:'Cormorant Garamond',serif">
     “We carry the soul of Bombay’s street kitchens and the ceremony of the British table — plated as one unforgettable evening.”
   </blockquote>
   <div class="divider max-w-xs mx-auto"></div>
+  </div>
 </section>
 
 {{-- SIGNATURE DISHES --}}
-<section class="py-10 px-6 pb-24 max-w-6xl mx-auto">
+<section class="site-container py-10 pb-24">
   <div class="text-center mb-16">
     <p class="tracking-widest uppercase text-primary text-xs mb-4">Signature Plates</p>
     <h2 class="text-5xl font-light" style="font-family:'Cormorant Garamond',serif">The Icons</h2>
@@ -58,7 +60,8 @@
 </section>
 
 {{-- HERITAGE SPLIT --}}
-<section class="grid grid-cols-1 lg:grid-cols-2 border-t border-b border-base-300">
+<section class="border-t border-b border-base-300">
+  <div class="site-container grid grid-cols-1 lg:grid-cols-2">
   <figure class="overflow-hidden min-h-80">
     <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
   </figure>
@@ -77,15 +80,18 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 {{-- CTA --}}
-<section class="py-24 text-center max-w-2xl mx-auto px-6">
+<section class="site-container py-24 text-center">
+  <div class="max-w-2xl mx-auto">
   <p class="tracking-widest uppercase text-primary text-xs mb-4">An Evening Awaits</p>
   <h2 class="text-5xl font-light mb-10" style="font-family:'Cormorant Garamond',serif">Join us at the table</h2>
   <div class="flex gap-4 justify-center flex-wrap">
     <a href="{{ route('reserve') }}" class="btn btn-primary btn-lg tracking-widest text-xs uppercase">Book a Table</a>
     <a href="{{ route('contact') }}" class="btn btn-outline btn-lg tracking-widest text-xs uppercase">Order Online</a>
+  </div>
   </div>
 </section>
 

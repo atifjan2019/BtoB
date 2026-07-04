@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Private Events — Bombay to Britain')
 @section('content')
-<div class="py-20 px-6 min-h-screen">
-  <div class="max-w-5xl mx-auto">
+<div class="site-container py-20 min-h-screen">
+  <div>
     <div class="text-center mb-16">
       <p class="tracking-widest uppercase text-primary text-xs mb-4">Private Dining &amp; Catering</p>
       <h1 class="text-6xl font-light" style="font-family:'Cormorant Garamond',serif">Occasions, Elevated</h1>

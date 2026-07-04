@@ -12,10 +12,11 @@
 <body class="font-sans">
 
 <!-- NAVBAR -->
-<div class="navbar fixed top-0 z-50 px-6 lg:px-10 border-b border-base-300 transition-all duration-300"
+<div class="fixed top-0 z-50 w-full border-b border-base-300 transition-all duration-300"
      x-data="{ scrolled: false }"
      :class="scrolled ? 'bg-base-100/95 backdrop-blur-sm shadow-lg' : 'bg-base-100/40 backdrop-blur-sm'"
      x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 40, { passive:true })">
+  <div class="navbar site-container">
 
   <!-- Logo -->
   <div class="navbar-start">
@@ -55,6 +56,7 @@
       </ul>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- PAGE CONTENT -->
@@ -63,34 +65,78 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="footer p-10 bg-neutral text-neutral-content border-t border-base-300">
-  <aside>
-    <img src="{{ asset('assets/mark.png') }}" alt="" class="w-10 h-10 object-contain">
-    <p class="text-primary font-bold tracking-widest text-lg" style="font-family:'Cormorant Garamond',serif">Bombay <em>to</em> Britain</p>
-    <p class="text-sm opacity-60 max-w-xs leading-relaxed">Timeless Indian cuisine, from the spice markets of Bombay to the grand tables of Britain.</p>
-  </aside>
-  <nav>
-    <h6 class="footer-title tracking-widest text-xs">Explore</h6>
-    @foreach([['Home','home'],['Menu','menu'],['About','about'],['Gallery','gallery'],['Private Events','events'],['Contact','contact']] as [$label,$r])
-    <a href="{{ route($r) }}" class="link link-hover text-sm">{{ $label }}</a>
-    @endforeach
-  </nav>
-  <nav>
-    <h6 class="footer-title tracking-widest text-xs">Hours</h6>
-    <p class="text-sm opacity-70">Mon – Thu · 5pm – 11pm</p>
-    <p class="text-sm opacity-70">Fri – Sat · 12pm – 12am</p>
-    <p class="text-sm opacity-70">Sunday · 12pm – 10pm</p>
-  </nav>
-  <nav>
-    <h6 class="footer-title tracking-widest text-xs">Connect</h6>
-    <span class="link link-hover text-sm">Instagram</span>
-    <span class="link link-hover text-sm">Facebook</span>
-    <span class="link link-hover text-sm">reservations@btob.co.uk</span>
-  </nav>
+<footer class="bg-neutral text-neutral-content">
+
+  {{-- Gold top accent line --}}
+  <div class="h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+  {{-- Main footer body --}}
+  <div class="site-container py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+    {{-- Brand block --}}
+    <div class="lg:col-span-1 flex flex-col gap-5">
+      <div class="flex items-center gap-3">
+        <img src="{{ asset('assets/mark.png') }}" alt="Bombay to Britain" class="w-12 h-12 object-contain">
+        <div class="flex flex-col leading-none">
+          <span class="text-primary font-bold tracking-widest text-lg" style="font-family:'Cormorant Garamond',serif">BOMBAY <em class="font-medium text-secondary">to</em> BRITAIN</span>
+          <span class="text-neutral-content/40 tracking-[4px] text-[9px] uppercase mt-1">Fine Indian Dining</span>
+        </div>
+      </div>
+      <p class="text-sm text-neutral-content/55 leading-relaxed max-w-xs">Timeless Indian cuisine — carried from the spice markets of Bombay to the grand tables of Britain.</p>
+      <a href="{{ route('reserve') }}" class="btn btn-primary btn-sm w-fit tracking-widest text-xs uppercase">Book a Table</a>
+    </div>
+
+    {{-- Navigation --}}
+    <div>
+      <h3 class="text-xs tracking-[3px] uppercase text-primary font-semibold mb-5">Explore</h3>
+      <ul class="space-y-3">
+        @foreach([['Home','home'],['Menu','menu'],['About','about'],['Gallery','gallery'],['Private Events','events'],['Contact','contact']] as [$label,$r])
+        <li><a href="{{ route($r) }}" class="text-sm text-neutral-content/60 hover:text-primary transition-colors">{{ $label }}</a></li>
+        @endforeach
+      </ul>
+    </div>
+
+    {{-- Hours --}}
+    <div>
+      <h3 class="text-xs tracking-[3px] uppercase text-primary font-semibold mb-5">Opening Hours</h3>
+      <ul class="space-y-2 text-sm text-neutral-content/60">
+        <li class="flex justify-between gap-4"><span>Mon – Thu</span><span>5pm – 11pm</span></li>
+        <li class="flex justify-between gap-4"><span>Fri – Sat</span><span>12pm – 12am</span></li>
+        <li class="flex justify-between gap-4"><span>Sunday</span><span>12pm – 10pm</span></li>
+      </ul>
+      <div class="h-px bg-neutral-content/10 my-6"></div>
+      <h3 class="text-xs tracking-[3px] uppercase text-primary font-semibold mb-5">Connect</h3>
+      <ul class="space-y-2 text-sm text-neutral-content/60">
+        <li><span class="hover:text-primary transition-colors cursor-pointer">Instagram</span></li>
+        <li><span class="hover:text-primary transition-colors cursor-pointer">Facebook</span></li>
+      </ul>
+    </div>
+
+    {{-- Contact --}}
+    <div>
+      <h3 class="text-xs tracking-[3px] uppercase text-primary font-semibold mb-5">Visit Us</h3>
+      <address class="not-italic space-y-3 text-sm text-neutral-content/60">
+        <p class="leading-relaxed">Unit 5, Market Square<br>Royton, Oldham OL2 5QD</p>
+        <p><a href="tel:07487244838" class="hover:text-primary transition-colors">07487 244 838</a></p>
+        <p><a href="mailto:reservations@btob.co.uk" class="hover:text-primary transition-colors">reservations@btob.co.uk</a></p>
+        <p class="text-neutral-content/40 text-xs">Daily · 10:00 AM – 11:00 PM</p>
+      </address>
+    </div>
+
+  </div>
+
+  {{-- Gold divider --}}
+  <div class="site-container">
+    <div class="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+  </div>
+
+  {{-- Bottom bar --}}
+  <div class="site-container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-content/35">
+    <p>© {{ date('Y') }} Mumbai Dining (UK) Ltd · Trading as Bombay to Britain. All rights reserved.</p>
+    <p>A discretionary 12.5% service charge applies to all tables.</p>
+  </div>
+
 </footer>
-<div class="footer footer-center p-4 bg-base-300 text-base-content/40 text-xs">
-  <p>© {{ date('Y') }} Bombay to Britain. All rights reserved. &nbsp;·&nbsp; Crafted with fire &amp; spice.</p>
-</div>
 
 </body>
 </html>

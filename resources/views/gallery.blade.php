@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Gallery — Bombay to Britain')
 @section('content')
-<div class="py-20 px-6 min-h-screen">
+<div class="site-container py-20 min-h-screen">
   <div class="text-center mb-16">
     <p class="tracking-widest uppercase text-primary text-xs mb-4">A Look Inside</p>
     <h1 class="text-6xl font-light" style="font-family:'Cormorant Garamond',serif">Gallery</h1>
   </div>
-  <div class="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
     @foreach([
       ['1559528896-c5310744cce8','Signature dish','col-span-2 row-span-2',1000,600],
       ['1414235077428-338989a2e8c0','Dining room','',900,300],
