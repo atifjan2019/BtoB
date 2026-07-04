@@ -3,16 +3,16 @@
 @section('content')
 
 {{-- HERO --}}
-<div class="hero min-h-screen" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&q=80&w=2000&auto=format&fit=crop')">
-  <div class="hero-overlay bg-black/65"></div>
-  <div class="hero-content site-container text-center text-neutral-content py-20">
-    <div class="max-w-2xl">
+<div class="hero hero-vignette min-h-screen relative" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&q=80&w=2000&auto=format&fit=crop')">
+  <div class="hero-overlay bg-black/55"></div>
+  <div class="hero-content site-container relative z-10 text-center text-neutral-content py-20">
+    <div class="max-w-3xl">
       <img src="{{ asset('assets/mark.png') }}" alt="" class="w-28 h-28 object-contain mx-auto mb-6">
-      <p class="tracking-[8px] uppercase text-primary text-xs mb-5">Est. Bombay · Reborn in London</p>
-      <h1 class="text-6xl font-light mb-6" style="font-family:'Cormorant Garamond',serif">
+      <p class="section-kicker mb-5">Est. Bombay · Reborn in London</p>
+      <h1 class="display-serif text-6xl lg:text-7xl font-light mb-6">
         Two Cities.<br><em class="text-primary">One Table.</em>
       </h1>
-      <p class="text-base-content/80 font-light leading-relaxed mb-10 max-w-xl mx-auto">A journey from the spice bazaars of Bombay to the grand dining rooms of Britain — timeless Indian cuisine, reimagined with quiet elegance.</p>
+      <p class="text-neutral-content/80 font-light leading-relaxed mb-10 max-w-xl mx-auto">A journey from the spice bazaars of Bombay to the grand dining rooms of Britain, reimagined with a sharper, contemporary dining room sensibility.</p>
       <div class="flex gap-4 justify-center flex-wrap">
         <a href="{{ route('reserve') }}" class="btn btn-primary btn-lg tracking-widest text-xs uppercase">Reserve a Table</a>
         <a href="{{ route('menu') }}" class="btn btn-outline btn-lg tracking-widest text-xs uppercase">Explore Menu</a>
@@ -24,9 +24,9 @@
 {{-- PHILOSOPHY --}}
 <section class="site-container py-24 text-center">
   <div class="max-w-4xl mx-auto">
-  <p class="tracking-widest uppercase text-primary text-xs mb-5">Our Philosophy</p>
-  <blockquote class="text-3xl font-light leading-relaxed text-base-content/90" style="font-family:'Cormorant Garamond',serif">
-    “We carry the soul of Bombay’s street kitchens and the ceremony of the British table — plated as one unforgettable evening.”
+  <p class="section-kicker mb-5">Our Philosophy</p>
+  <blockquote class="display-serif text-3xl lg:text-4xl font-light leading-relaxed text-base-content/90">
+    “The soul of Bombay’s street kitchens, plated with the restraint and rhythm of a modern British dining room.”
   </blockquote>
   <div class="divider max-w-xs mx-auto"></div>
   </div>
@@ -35,8 +35,8 @@
 {{-- SIGNATURE DISHES --}}
 <section class="site-container py-10 pb-24">
   <div class="text-center mb-16">
-    <p class="tracking-widest uppercase text-primary text-xs mb-4">Signature Plates</p>
-    <h2 class="text-5xl font-light" style="font-family:'Cormorant Garamond',serif">The Icons</h2>
+    <p class="section-kicker mb-4">Signature Plates</p>
+    <h2 class="display-serif text-5xl font-light">The Icons</h2>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
     @foreach([
@@ -45,13 +45,13 @@
       ['Rogan Josh','Kashmiri','1768179669433-bd9d52949c20','Slow-braised lamb shank in a fragrant Kashmiri chilli & clove gravy.'],
       ['Tandoori King Prawns','From the Fire','1742599361498-79824d24e355','Jumbo prawns marinated in ajwain & yoghurt, kissed by the clay oven.'],
     ] as [$name,$tag,$img,$desc])
-    <div class="card bg-base-200 shadow-xl overflow-hidden">
-      <figure class="h-56 overflow-hidden">
+    <div class="dish-card card h-full">
+      <figure class="relative h-56 overflow-hidden">
         <img src="https://images.unsplash.com/photo-{{ $img }}?fm=jpg&q=80&w=700&auto=format&fit=crop" alt="{{ $name }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
       </figure>
       <div class="card-body p-5">
         <div class="badge badge-primary badge-sm tracking-widest uppercase text-[9px]">{{ $tag }}</div>
-        <h3 class="card-title text-xl mt-2" style="font-family:'Cormorant Garamond',serif">{{ $name }}</h3>
+        <h3 class="display-serif card-title text-2xl mt-2">{{ $name }}</h3>
         <p class="text-sm text-base-content/60 font-light leading-relaxed">{{ $desc }}</p>
       </div>
     </div>
@@ -61,21 +61,21 @@
 
 {{-- HERITAGE SPLIT --}}
 <section class="border-t border-b border-base-300">
-  <div class="site-container grid grid-cols-1 lg:grid-cols-2">
+  <div class="site-container grid grid-cols-1 lg:grid-cols-2 py-10">
   <figure class="overflow-hidden min-h-80">
     <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="" class="w-full h-full object-cover">
   </figure>
-  <div class="flex flex-col justify-center p-12 lg:p-20 bg-base-200">
-    <p class="tracking-widest uppercase text-primary text-xs mb-4">The Craft</p>
-    <h2 class="text-4xl font-light mb-6" style="font-family:'Cormorant Garamond',serif">Spice, Fire &amp; Ceremony</h2>
+  <div class="surface-panel flex flex-col justify-center p-8 lg:p-16">
+    <p class="section-kicker mb-4">The Craft</p>
+    <h2 class="display-serif text-4xl font-light mb-6">Spice, Fire &amp; Ceremony</h2>
     <p class="text-sm font-light leading-loose text-base-content/70 mb-8">Our masalas are ground each dawn, our tandoor never sleeps, and every dish is finished by hand. What arrives at your table is a ritual generations in the making — the warmth of Bombay carried with British poise.</p>
     <div class="stats stats-horizontal bg-transparent">
       <div class="stat p-0 pr-8">
-        <div class="stat-value text-primary" style="font-family:'Cormorant Garamond',serif">28</div>
+        <div class="display-serif stat-value text-primary">28</div>
         <div class="stat-desc tracking-widest uppercase text-[10px]">Hand-ground spices</div>
       </div>
       <div class="stat p-0">
-        <div class="stat-value text-primary" style="font-family:'Cormorant Garamond',serif">1991</div>
+        <div class="display-serif stat-value text-primary">1991</div>
         <div class="stat-desc tracking-widest uppercase text-[10px]">Family recipes since</div>
       </div>
     </div>
@@ -86,11 +86,11 @@
 {{-- CTA --}}
 <section class="site-container py-24 text-center">
   <div class="max-w-2xl mx-auto">
-  <p class="tracking-widest uppercase text-primary text-xs mb-4">An Evening Awaits</p>
-  <h2 class="text-5xl font-light mb-10" style="font-family:'Cormorant Garamond',serif">Join us at the table</h2>
+  <p class="section-kicker mb-4">An Evening Awaits</p>
+  <h2 class="display-serif text-5xl font-light mb-10">Join us at the table</h2>
   <div class="flex gap-4 justify-center flex-wrap">
     <a href="{{ route('reserve') }}" class="btn btn-primary btn-lg tracking-widest text-xs uppercase">Book a Table</a>
-    <a href="{{ route('contact') }}" class="btn btn-outline btn-lg tracking-widest text-xs uppercase">Order Online</a>
+    <a href="{{ route('order') }}" class="btn btn-outline btn-lg tracking-widest text-xs uppercase">Order Online</a>
   </div>
   </div>
 </section>

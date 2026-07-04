@@ -13,7 +13,21 @@ class PageController extends Controller
 
     public function menu()
     {
-        $menu = [
+        $menu = $this->menuData();
+
+        return view('menu', compact('menu'));
+    }
+
+    public function order()
+    {
+        $menu = $this->menuData();
+
+        return view('order', compact('menu'));
+    }
+
+    private function menuData(): array
+    {
+        return [
             ['title' => 'To Begin', 'note' => 'Chaat & Small Plates', 'items' => [
                 ['name' => 'Papdi Chaat',     'desc' => 'Crisp wafers, spiced chickpeas, tamarind, mint & sweet yoghurt', 'price' => '£9',  'badge' => 'Veg',       'badgeColor' => '#7aa06b', 'img' => '1559528896-c5310744cce8'],
                 ['name' => 'Amritsari Fish',  'desc' => 'Ajwain-battered market fish, kachumber, burnt-lime aioli',      'price' => '£12', 'badge' => 'Spicy',     'badgeColor' => '#c46a4a', 'img' => '1768179669433-bd9d52949c20'],
@@ -42,8 +56,6 @@ class PageController extends Controller
                 ['name' => 'Kulfi Falooda',       'desc' => 'Pistachio kulfi, rose, vermicelli, basil seed',    'price' => '£8', 'badge' => 'Chilled',   'badgeColor' => '#7a94a0', 'img' => '1742599361498-79824d24e355'],
             ]],
         ];
-
-        return view('menu', compact('menu'));
     }
 
     public function about()   { return view('about'); }
