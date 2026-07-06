@@ -214,24 +214,58 @@ body {
 }
 
 .btn {
-  min-height: 2.75rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 2.85rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  border: 1px solid transparent;
-  padding-inline: 1rem;
+  gap: 0.625rem;
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  padding-inline: 1.15rem;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease, opacity 180ms ease;
-  border-radius: 0.25rem;
-  letter-spacing: 0.16em;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  letter-spacing: 0.18em;
+  box-shadow:
+    0 1px 0 color-mix(in oklab, white 16%, transparent) inset,
+    0 14px 30px color-mix(in oklab, black 18%, transparent);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, color-mix(in oklab, white 16%, transparent), transparent 48%);
+  opacity: 0.75;
+  pointer-events: none;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 color-mix(in oklab, white 20%, transparent) inset,
+    0 20px 40px color-mix(in oklab, black 26%, transparent);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 1px 0 color-mix(in oklab, white 12%, transparent) inset,
+    0 8px 18px color-mix(in oklab, black 18%, transparent);
 }
 
 .btn:disabled {
@@ -241,14 +275,14 @@ body {
 }
 
 .btn-sm {
-  min-height: 2rem;
-  padding-inline: 0.8rem;
+  min-height: 2.35rem;
+  padding-inline: 0.95rem;
   font-size: 0.68rem;
 }
 
 .btn-lg {
   min-height: 3.25rem;
-  padding-inline: 1.35rem;
+  padding-inline: 1.5rem;
 }
 
 .btn-circle {
@@ -260,29 +294,41 @@ body {
 
 .btn-primary {
   color: var(--color-primary-content);
-  border-color: transparent;
+  border-color: color-mix(in oklab, var(--color-primary) 72%, white 10%);
   background:
     linear-gradient(180deg, color-mix(in oklab, var(--color-primary) 92%, white 8%), color-mix(in oklab, var(--color-primary) 86%, black 12%));
-  box-shadow: 0 10px 28px color-mix(in oklab, var(--color-primary) 22%, transparent);
+  box-shadow:
+    0 1px 0 color-mix(in oklab, white 32%, transparent) inset,
+    0 18px 42px color-mix(in oklab, var(--color-primary) 24%, transparent);
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 1px 0 color-mix(in oklab, white 36%, transparent) inset,
+    0 24px 52px color-mix(in oklab, var(--color-primary) 32%, transparent);
 }
 
 .btn-outline {
   color: var(--color-base-content);
-  border-color: color-mix(in oklab, var(--color-base-content) 22%, transparent);
-  background-color: color-mix(in oklab, var(--color-base-100) 36%, transparent);
-  backdrop-filter: blur(10px);
+  border-color: color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--color-base-200) 46%, transparent), color-mix(in oklab, var(--color-base-100) 58%, transparent));
+  backdrop-filter: blur(14px) saturate(125%);
 }
 
 .btn-outline:hover,
 .btn-ghost:hover {
   border-color: color-mix(in oklab, var(--color-primary) 55%, transparent);
   color: var(--color-primary);
-  background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--color-primary) 12%, transparent), color-mix(in oklab, var(--color-base-100) 52%, transparent));
 }
 
 .btn-ghost {
   color: var(--color-base-content);
-  background-color: transparent;
+  border-color: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--color-base-200) 28%, transparent), color-mix(in oklab, var(--color-base-100) 28%, transparent));
 }
 
 .badge {
@@ -579,7 +625,7 @@ body {
 .home-hero-title {
   max-width: 11ch;
   color: var(--color-neutral-content);
-  font-size: clamp(4.25rem, 8vw, 8.5rem);
+  font-size: clamp(3.2rem, 6vw, 6.4rem);
   line-height: 0.86;
 }
 

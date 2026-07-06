@@ -29,12 +29,8 @@
 
   <!-- Logo -->
   <div class="navbar-start">
-    <a href="{{ route('home') }}" class="flex items-center gap-3">
+    <a href="{{ route('home') }}" class="flex items-center">
       <img src="{{ asset('assets/mark.png') }}" alt="Bombay to Britain" class="w-11 h-11 object-contain">
-      <div class="flex flex-col leading-none">
-        <span class="brand-wordmark text-primary font-bold text-lg whitespace-nowrap">BOMBAY <em class="font-medium text-secondary">to</em> BRITAIN</span>
-        <span class="text-base-content/50 tracking-[4px] text-[9px] uppercase mt-1">Fine Indian Dining</span>
-      </div>
     </a>
   </div>
 
