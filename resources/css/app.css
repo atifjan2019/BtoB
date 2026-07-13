@@ -1789,7 +1789,8 @@ img, iframe, video { max-width: 100%; }
   .nav-brand > span { min-width: 0; font-size: clamp(.68rem, 3.2vw, .85rem); gap: .2rem; white-space: nowrap; }
   .nav-brand img { flex: 0 0 auto; width: 2.65rem; height: 2.65rem; }
   .nav-actions { flex: 0 0 auto; gap: 0; }
-  .nav-toggle { display: grid !important; flex: 0 0 2.75rem; }
+  .nav-toggle { position: absolute; z-index: 5; top: 50%; right: 1.25rem; display: grid !important; flex: 0 0 2.75rem; border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); transform: translateY(-50%); }
+  .nav-actions { width: 2.75rem; height: 2.75rem; }
   .mobile-panel { max-height: calc(100svh - 6.7rem); overflow-y: auto; }
   .booking-page { min-height: 0; display: block; }
   .booking-visual { position: relative; height: 31rem; min-height: 0; }
@@ -1828,4 +1829,5 @@ img, iframe, video { max-width: 100%; }
   .footer-column { padding-top: 0; }
   .booking-visual { height: 28rem; }
   .booking-visual-copy h1 { font-size: clamp(3.9rem, 19vw, 5rem); }
+  .booking-visual-copy h1 em { display: block; }
 }
