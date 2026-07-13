@@ -1,113 +1,125 @@
 @extends('layouts.app')
 @section('title', 'Reserve a Table — Bombay to Britain')
 @section('content')
-<div class="reservation-page min-h-screen"
-     x-data="{
-       tables: [],
-       selectedTable: null,
-       reserved: false,
-       init() {
-         const zones = ['Window','Main Hall','Terrace','The Gallery','Private Nook','Chef\'s Counter'];
-         const seatOpts = [2,2,2,4,4,4,6,8];
-         this.tables = Array.from({length:50},(_,i)=>({
-           id:i+1, num:String(i+1).padStart(2,'0'),
-           seats:seatOpts[Math.floor(Math.random()*seatOpts.length)],
-           zone:zones[Math.floor(Math.random()*zones.length)],
-           booked:Math.random()<0.34
-         }));
-       },
-       get availCount() { return this.tables.filter(t=>!t.booked).length; },
-       get selT() { return this.tables.find(t=>t.id===this.selectedTable)||null; }
-     }">
-  <div class="page-hero">
-    <div class="site-container">
-      <div class="text-center">
-        <p class="section-kicker mb-4">Reservations</p>
-        <h1 class="display-serif text-6xl font-light">Meet us at the table</h1>
-        <p class="text-sm font-light text-base-content/60 mt-4 max-w-md leading-relaxed">Choose your table from tonight’s floor, then share your details.</p>
-      </div>
+
+<section class="booking-page" x-data="{
+  step: 1,
+  complete: false,
+  date: new Date().toISOString().slice(0, 10),
+  guests: 2,
+  time: '',
+  seating: 'Best available',
+  times: ['5:30 PM','6:00 PM','6:30 PM','7:00 PM','7:30 PM','8:00 PM','8:30 PM','9:00 PM'],
+  next() { if (this.date && this.guests && this.time) { this.step = 2; window.scrollTo({top: 0, behavior: 'smooth'}); } },
+  submit() { this.complete = true; window.scrollTo({top: 0, behavior: 'smooth'}); }
+}">
+  <div class="booking-visual">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&q=88&w=1400&auto=format&fit=crop" alt="An intimate table set for dinner at Bombay to Britain">
+    <div class="booking-visual-shade"></div>
+    <div class="booking-visual-copy">
+      <p class="eyebrow"><span></span> Reservations</p>
+      <h1>Meet us<br>at the <em>table.</em></h1>
+      <p>Come for dinner. Stay for the stories.</p>
     </div>
+    <div class="booking-visual-note"><span>Royton · Oldham</span><strong>Open daily</strong></div>
   </div>
-  <div class="site-container py-16">
 
-    {{-- Confirmation --}}
-    <div x-show="reserved" class="card bg-base-200 border border-primary/30 max-w-lg mx-auto text-center">
-      <div class="card-body py-14">
-        <h2 class="display-serif text-4xl text-primary mb-4">Thank You</h2>
-        <p class="text-sm font-light text-base-content/70 leading-relaxed" x-text="selT ? 'Your request for Table '+selT.num+' ('+selT.zone+', '+selT.seats+' seats) has been received. Our maître d\'  will confirm shortly.' : 'Your request has been received. Our maître d\' will confirm your reservation shortly.'"></p>
-        <div class="card-actions justify-center mt-6">
-          <button @click="reserved=false;selectedTable=null" class="btn btn-outline btn-sm tracking-widest text-xs uppercase">Make another booking</button>
-        </div>
-      </div>
-    </div>
+  <div class="booking-panel">
+    <div class="booking-panel-inner">
+      <a href="{{ route('home') }}" class="booking-back">← Back to restaurant</a>
 
-    <div x-show="!reserved">
-      {{-- Floor legend --}}
-      <div class="flex items-center justify-between flex-wrap gap-4 mb-4">
-        <h2 class="display-serif text-2xl font-light">Tonight’s Floor</h2>
-        <div class="flex gap-4 text-xs flex-wrap">
-          <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-base-300 border border-base-content/20"></span>Available</span>
-          <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-primary"></span>Selected</span>
-          <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-base-300 opacity-30"></span>Reserved</span>
-        </div>
-      </div>
-      <p class="text-xs text-base-content/40 mb-4"><span x-text="availCount"></span> of 50 tables available tonight</p>
-
-      {{-- Table grid --}}
-      <div class="grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-10 gap-2 mb-10">
-        <template x-for="t in tables" :key="t.id">
-          <div @click="!t.booked && (selectedTable=t.id)"
-               :class="t.booked ? 'opacity-30 cursor-not-allowed bg-base-300' : (selectedTable===t.id ? 'bg-primary text-primary-content cursor-pointer ring-2 ring-primary ring-offset-2 ring-offset-base-100' : 'bg-base-200 hover:bg-base-300 cursor-pointer')"
-               class="rounded p-2 text-center transition-all">
-            <div class="display-serif text-lg font-semibold leading-none" x-text="t.num"></div>
-            <div class="text-[8px] opacity-60 mt-1 leading-tight" x-text="t.seats+'s'"></div>
+      <template x-if="!complete">
+        <div>
+          <div class="booking-progress">
+            <div><span :class="step >= 1 ? 'is-active' : ''">01</span><p>Find a table</p></div>
+            <i :class="step === 2 ? 'is-complete' : ''"></i>
+            <div><span :class="step >= 2 ? 'is-active' : ''">02</span><p>Your details</p></div>
           </div>
-        </template>
-      </div>
 
-      {{-- Form --}}
-      <div class="card bg-base-200 border border-base-300 max-w-2xl mx-auto">
-        <div class="card-body">
-          <div x-show="selectedTable" class="alert alert-info mb-4">
-            <span class="text-sm" x-text="'Table '+selT?.num+' · '+selT?.zone+' · '+selT?.seats+' seats'"></span>
-          </div>
-          <div x-show="!selectedTable" class="text-xs text-base-content/40 mb-4">No table selected — we’ll assign the best available.</div>
-          <form @submit.prevent="reserved=true">
-            @csrf
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="form-control">
-                <label class="label"><span class="label-text tracking-widest uppercase text-xs">Full Name</span></label>
-                <input name="name" type="text" placeholder="Your name" required class="input input-bordered w-full">
-              </div>
-              <div class="form-control">
-                <label class="label"><span class="label-text tracking-widest uppercase text-xs">Phone</span></label>
-                <input name="phone" type="tel" placeholder="Contact number" class="input input-bordered w-full">
-              </div>
-              <div class="form-control">
-                <label class="label"><span class="label-text tracking-widest uppercase text-xs">Date</span></label>
-                <input name="date" type="date" required class="input input-bordered w-full">
-              </div>
-              <div class="form-control">
-                <label class="label"><span class="label-text tracking-widest uppercase text-xs">Time</span></label>
-                <input name="time" type="time" required class="input input-bordered w-full">
-              </div>
-              <div class="form-control sm:col-span-2">
-                <label class="label"><span class="label-text tracking-widest uppercase text-xs">Guests</span></label>
-                <select name="guests" class="select select-bordered w-full">
-                  <option>2 guests</option><option>3 guests</option><option>4 guests</option>
-                  <option>5 guests</option><option>6 guests</option><option>7+ guests</option>
-                </select>
-              </div>
-              <div class="form-control sm:col-span-2">
-                <label class="label"><span class="label-text tracking-widest uppercase text-xs">Special Requests</span></label>
-                <textarea name="requests" rows="3" placeholder="Anniversary, dietary needs, seating preference…" class="textarea textarea-bordered w-full"></textarea>
-              </div>
+          <div x-show="step === 1" x-transition.opacity>
+            <div class="booking-heading">
+              <p class="section-number">Step one</p>
+              <h2>Find your table</h2>
+              <p>Choose when you’d like to join us. Available times will appear below.</p>
             </div>
-            <button type="submit" class="btn btn-primary w-full mt-6 tracking-widest text-xs uppercase">Request Reservation</button>
-          </form>
+
+            <div class="booking-fields booking-fields-two">
+              <label class="booking-field">
+                <span>Date</span>
+                <input type="date" x-model="date" required>
+              </label>
+              <label class="booking-field">
+                <span>Party size</span>
+                <select x-model.number="guests">
+                  @foreach(range(1, 8) as $guest)
+                    <option value="{{ $guest }}">{{ $guest }} {{ $guest === 1 ? 'guest' : 'guests' }}</option>
+                  @endforeach
+                  <option value="9">9+ guests</option>
+                </select>
+              </label>
+            </div>
+
+            <fieldset class="booking-times">
+              <legend>Available times</legend>
+              <div>
+                <template x-for="slot in times" :key="slot">
+                  <button type="button" @click="time = slot" :class="time === slot ? 'is-selected' : ''" x-text="slot"></button>
+                </template>
+              </div>
+            </fieldset>
+
+            <button type="button" class="booking-submit" :disabled="!time" @click="next()">
+              Continue to details <span>→</span>
+            </button>
+            <p class="booking-smallprint">For parties of 9 or more, please call us on <a href="tel:07487244838">07487 244 838</a>.</p>
+          </div>
+
+          <div x-show="step === 2" x-cloak x-transition.opacity>
+            <div class="booking-heading">
+              <button type="button" class="booking-step-back" @click="step = 1">← Change date or time</button>
+              <p class="section-number">Step two</p>
+              <h2>A few final details</h2>
+              <div class="booking-summary"><strong x-text="time"></strong><span>·</span><span x-text="guests + (guests === 1 ? ' guest' : ' guests')"></span><span>·</span><span x-text="new Date(date + 'T12:00:00').toLocaleDateString('en-GB', {day:'numeric', month:'short'})"></span></div>
+            </div>
+
+            <form @submit.prevent="submit()">
+              <div class="booking-fields booking-fields-two">
+                <label class="booking-field"><span>First name</span><input type="text" name="first_name" autocomplete="given-name" required placeholder="First name"></label>
+                <label class="booking-field"><span>Last name</span><input type="text" name="last_name" autocomplete="family-name" required placeholder="Last name"></label>
+                <label class="booking-field"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@example.com"></label>
+                <label class="booking-field"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" required placeholder="Contact number"></label>
+              </div>
+
+              <fieldset class="booking-preference">
+                <legend>Seating preference <small>Optional</small></legend>
+                <div>
+                  <template x-for="option in ['Best available','Window','Quiet corner','Near the bar']" :key="option">
+                    <button type="button" @click="seating = option" :class="seating === option ? 'is-selected' : ''" x-text="option"></button>
+                  </template>
+                </div>
+              </fieldset>
+
+              <label class="booking-field booking-notes"><span>Anything we should know? <small>Optional</small></span><textarea name="requests" rows="3" placeholder="Dietary needs, celebrations or accessibility requests"></textarea></label>
+              <button type="submit" class="booking-submit">Request reservation <span>↗</span></button>
+              <p class="booking-smallprint">Your table is held once our team confirms by email or phone.</p>
+            </form>
+          </div>
         </div>
-      </div>
+      </template>
+
+      <template x-if="complete">
+        <div class="booking-confirmation">
+          <div class="booking-confirmation-mark">✓</div>
+          <p class="section-number">Request received</p>
+          <h2>We’ll set<br>the table.</h2>
+          <p>Your request for <strong x-text="time"></strong> on <strong x-text="new Date(date + 'T12:00:00').toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long'})"></strong> has been received. We’ll confirm shortly.</p>
+          <div class="booking-confirmation-actions">
+            <a href="{{ route('menu') }}" class="btn btn-primary">View the menu</a>
+            <button type="button" class="btn btn-quiet" @click="complete = false; step = 1; time = ''">Make another booking</button>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
-</div>
+</section>
 @endsection

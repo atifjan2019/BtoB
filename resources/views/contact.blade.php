@@ -9,7 +9,7 @@
   </div>
 </div>
 </div>
-<div class="site-container py-16 min-h-screen">
+<div class="contact-page site-container py-16 min-h-screen">
   <div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       <div class="surface-panel p-8 lg:p-10 space-y-6">

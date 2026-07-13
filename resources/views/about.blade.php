@@ -9,7 +9,7 @@
     </div>
   </div>
 </div>
-<div class="site-container py-16 min-h-screen">
+<div class="about-page site-container py-16 min-h-screen">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
     <figure class="dish-card overflow-hidden">
       <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?fm=jpg&q=80&w=1100&auto=format&fit=crop" alt="" class="w-full h-[460px] object-cover">
