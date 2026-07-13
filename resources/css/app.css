@@ -1879,3 +1879,193 @@ img, iframe, video { max-width: 100%; }
   .visit-reserve { width: 100%; min-width: 0; }
   .footer-marquee { overflow: hidden; white-space: nowrap; }
 }
+
+
+/* ─────────────────────────────────────────────────────────────
+   Operations desk — editorial admin
+   ───────────────────────────────────────────────────────────── */
+.admin-body {
+  --ok: #4a7c47;
+  --info: #4a6f9d;
+  --warn: #a97830;
+  --bad: #792e2d;
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Manrope", sans-serif;
+}
+[data-theme="btob"] .admin-body { --ok: #7fbf7a; --info: #82a9d6; --warn: #d2a455; --bad: #c96f66; }
+.admin-body::before { display: none; }
+.admin-body button { cursor: pointer; }
+
+/* Masthead */
+.admin-ticker { margin: 0; padding: .55rem 1rem; color: var(--paper); background: var(--ink); font-size: .55rem; font-weight: 600; letter-spacing: .22em; text-align: center; text-transform: uppercase; }
+.admin-masthead { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--line); }
+.admin-mastrow { width: min(100%, 100rem); margin-inline: auto; display: flex; align-items: center; gap: 2rem; min-height: 5.2rem; padding-inline: clamp(1.25rem, 3vw, 3rem); }
+.admin-brand { display: flex; align-items: center; gap: .8rem; color: var(--ink); }
+.admin-brand img { width: 2.6rem; height: 2.6rem; }
+.admin-wordmark { font-family: "Bodoni Moda", serif; font-size: 1.05rem; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; }
+.admin-wordmark i { color: var(--gold); font-size: .85em; }
+.admin-brand-desk { padding: .3rem .5rem; border: 1px solid var(--line); color: var(--muted); font-size: .48rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; }
+.admin-nav { display: flex; align-items: center; gap: clamp(1rem, 2vw, 1.9rem); margin-inline: auto; }
+.admin-nav a { position: relative; padding-block: .4rem; color: var(--muted); font-size: .62rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; white-space: nowrap; transition: color .18s ease; }
+.admin-nav a:hover { color: var(--ink); }
+.admin-nav a.is-active { color: var(--ink); }
+.admin-nav a.is-active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.2rem; height: 1px; background: var(--gold); }
+.admin-nav a b { color: var(--gold); font-family: "Bodoni Moda", serif; font-size: .68rem; font-weight: 400; vertical-align: super; }
+.admin-nav a.is-quiet { opacity: .45; }
+.admin-mast-actions { display: flex; align-items: center; gap: 1.3rem; margin-left: auto; }
+.admin-viewsite, .admin-signout { color: var(--muted); font-size: .58rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; white-space: nowrap; transition: color .18s ease; }
+.admin-viewsite:hover, .admin-signout:hover { color: var(--gold); }
+.admin-menu-toggle { display: none; position: relative; width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); }
+.admin-menu-toggle span { position: absolute; left: .6rem; right: .6rem; height: 1px; background: var(--ink); }
+.admin-menu-toggle span:first-child { transform: translateY(-3px); }
+.admin-menu-toggle span:last-child { transform: translateY(3px); }
+@media (min-width: 981px) { .admin-mobile-panel { display: none !important; } }
+
+/* Page frame */
+.admin-main { min-height: 60svh; }
+.admin-page { width: min(100%, 100rem); margin-inline: auto; padding: clamp(1.5rem, 3.2vw, 3.5rem) clamp(1.25rem, 3vw, 3rem); }
+.admin-kicker { color: var(--gold); font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.admin-section-no { margin-bottom: 1rem; color: var(--muted); font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.admin-page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2rem, 4vw, 3.2rem); }
+.admin-page-head h1 { margin: 1rem 0 .8rem; font-family: "Bodoni Moda", serif; font-size: clamp(2.6rem, 4.6vw, 4.4rem); font-weight: 400; letter-spacing: -.03em; line-height: .92; }
+.admin-page-head h1 em { color: var(--wine); }
+.admin-page-sub { max-width: 40ch; color: var(--muted); font-size: .74rem; line-height: 1.6; }
+.admin-page-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+.admin-button { min-height: 2.9rem; display: inline-flex; align-items: center; justify-content: center; gap: .8rem; padding-inline: 1.3rem; color: var(--ink); border: 1px solid var(--ink); background: transparent; font-size: .56rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: .2s ease; }
+.admin-button:hover { color: var(--paper); background: var(--ink); }
+.admin-button-solid { color: #fffaf0; border-color: var(--wine); background: var(--wine); }
+.admin-button-solid:hover { color: #fffaf0; border-color: var(--wine-dark); background: var(--wine-dark); }
+
+/* Metric strip */
+.admin-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); margin-bottom: clamp(2rem, 4vw, 3rem); }
+.admin-metric { min-width: 0; padding: 1.6rem 1.5rem 1.5rem; border-right: 1px solid var(--line); }
+.admin-metric:last-child { border-right: 0; }
+.admin-metric-label { color: var(--muted); font-size: .53rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.admin-metric > strong { display: block; margin: 1.1rem 0 .9rem; font-family: "Bodoni Moda", serif; font-size: clamp(2rem, 3vw, 3rem); font-weight: 400; line-height: 1; }
+.admin-metric-foot { display: flex; align-items: baseline; gap: .6rem; font-size: .56rem; }
+.admin-metric-foot b { font-weight: 700; }
+.admin-metric-foot b.is-up { color: var(--ok); }
+.admin-metric-foot b.is-down { color: var(--bad); }
+.admin-metric-foot span { overflow: hidden; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; }
+
+/* Cards */
+.admin-columns { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(18rem, .7fr); gap: 1.2rem; margin-bottom: 1.2rem; }
+.admin-columns-lower { grid-template-columns: minmax(0, 1.35fr) minmax(18rem, .65fr); }
+.admin-card { min-width: 0; display: flex; flex-direction: column; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper-deep) 62%, var(--paper)); }
+.admin-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.4rem 1.5rem 1.2rem; border-bottom: 1px solid var(--line); }
+.admin-card-head h2 { font-family: "Bodoni Moda", serif; font-size: 1.6rem; font-weight: 400; letter-spacing: .01em; }
+.admin-card-head .admin-section-no { margin-bottom: .55rem; }
+.admin-card-link { min-height: 3.3rem; display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-inline: 1.5rem; color: var(--muted); border-top: 1px solid var(--line); font-size: .54rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: color .18s ease; }
+.admin-card-link:hover { color: var(--gold); }
+.admin-count { min-width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-family: "Bodoni Moda", serif; font-size: .8rem; }
+
+/* Segmented filter */
+.admin-segmented { display: flex; border: 1px solid var(--line); }
+.admin-segmented button { min-height: 2rem; padding-inline: .8rem; color: var(--muted); font-size: .5rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; transition: .18s ease; }
+.admin-segmented button + button { border-left: 1px solid var(--line); }
+.admin-segmented button.is-active { color: var(--paper); background: var(--ink); }
+
+/* Table */
+.admin-table-wrap { width: 100%; overflow-x: auto; }
+.admin-table { width: 100%; min-width: 40rem; border-collapse: collapse; }
+.admin-table th, .admin-table td { padding: .9rem 1.5rem; border-bottom: 1px solid var(--line); text-align: left; font-size: .62rem; white-space: nowrap; }
+.admin-table th { color: var(--muted); font-size: .48rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.admin-table td { color: color-mix(in srgb, var(--ink) 78%, transparent); }
+.admin-table td strong { color: var(--ink); font-weight: 600; }
+.admin-table tbody tr:hover td { background: color-mix(in srgb, var(--paper-deep) 70%, transparent); }
+.admin-muted { color: var(--muted); }
+.admin-serif { font-family: "Bodoni Moda", serif; font-size: .76rem !important; }
+
+/* Status — dot carries the state, text stays in ink */
+.admin-status { width: fit-content; display: inline-flex; align-items: center; gap: .45rem; color: var(--ink); font-size: .5rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.admin-status i { flex: 0 0 auto; width: .42rem; height: .42rem; border-radius: 50%; background: var(--muted); }
+.admin-status-new i { background: var(--info); }
+.admin-status-preparing i { background: var(--warn); }
+.admin-status-ready i { background: var(--ok); }
+.admin-status-delivery i { background: var(--info); }
+.admin-status-complete { color: var(--muted); }
+.admin-res-arrived i { background: var(--ok); }
+.admin-res-confirmed i { background: var(--info); }
+.admin-res-pending i { background: var(--warn); }
+
+/* Arrivals */
+.admin-arrivals { padding-inline: 1.5rem; }
+.admin-arrivals article { display: grid; grid-template-columns: 3.1rem 1fr auto; gap: .9rem; align-items: center; padding-block: 1.05rem; border-bottom: 1px solid var(--line); }
+.admin-arrivals article:last-child { border-bottom: 0; }
+.admin-arrivals time { color: var(--gold); font-family: "Bodoni Moda", serif; font-size: .95rem; }
+.admin-arrivals strong { display: block; font-size: .62rem; font-weight: 600; }
+.admin-arrivals p { margin-top: .25rem; color: var(--muted); font-size: .53rem; }
+
+/* Revenue chart — single series, gold */
+.admin-chart { height: 17rem; display: grid; grid-template-columns: auto 1fr; gap: 1.1rem; padding: 1.6rem 1.5rem 1.2rem; }
+.admin-chart-y { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 1.55rem; color: var(--muted); font-size: .48rem; text-align: right; }
+.admin-bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(.5rem, 2vw, 1.6rem); align-items: end; background: repeating-linear-gradient(to bottom, var(--line) 0 1px, transparent 1px 25%) 0 0 / 100% calc(100% - 1.55rem) no-repeat; }
+.admin-bar { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: .65rem; }
+.admin-bar i { position: relative; flex-shrink: 0; width: min(100%, 2.1rem); display: block; background: var(--gold); border-radius: 3px 3px 0 0; transition: background .18s ease; }
+.admin-bar:hover i, .admin-bar:focus-visible i { background: color-mix(in srgb, var(--gold) 78%, var(--ink)); }
+.admin-bar:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+.admin-bar-day { height: .9rem; color: var(--muted); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; }
+.admin-bar-tip { position: absolute; left: 50%; top: -1.9rem; translate: -50%; padding: .3rem .5rem; border: 1px solid var(--line); color: var(--ink); background: var(--paper); font-size: .52rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s ease; }
+.admin-bar:hover .admin-bar-tip, .admin-bar:focus-visible .admin-bar-tip { opacity: 1; }
+.admin-bar-peak { position: absolute; left: 50%; bottom: calc(100% + .45rem); translate: -50%; color: var(--ink); font-family: "Bodoni Moda", serif; font-size: .78rem; white-space: nowrap; }
+.admin-chart-table { border-top: 1px solid var(--line); }
+.admin-chart-table summary { min-height: 3.3rem; display: flex; align-items: center; padding-inline: 1.5rem; color: var(--muted); cursor: pointer; font-size: .54rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; list-style: none; transition: color .18s ease; }
+.admin-chart-table summary::-webkit-details-marker { display: none; }
+.admin-chart-table summary:hover { color: var(--gold); }
+.admin-chart-table .admin-table { min-width: 0; }
+
+/* Dishes */
+.admin-dishes { padding: .5rem 1.5rem .8rem; }
+.admin-dishes article { display: grid; grid-template-columns: 1.6rem 2.8rem 1fr auto; gap: .9rem; align-items: center; padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.admin-dishes article:last-child { border-bottom: 0; }
+.admin-dish-no { color: var(--muted); font-family: "Bodoni Moda", serif; font-size: .8rem; }
+.admin-dishes img { width: 2.8rem; height: 2.8rem; object-fit: cover; filter: saturate(.85); }
+.admin-dishes strong { display: block; font-size: .62rem; font-weight: 600; }
+.admin-dishes div span { display: block; margin-top: .25rem; color: var(--muted); font-size: .52rem; }
+.admin-dishes b { font-family: "Bodoni Moda", serif; font-size: .9rem; font-weight: 400; }
+
+/* Footnote + colophon */
+.admin-footnote { margin-top: 1.6rem; color: var(--muted); font-size: .56rem; font-style: italic; }
+.admin-colophon { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; width: min(100%, 100rem); margin-inline: auto; padding: 1.4rem clamp(1.25rem, 3vw, 3rem); border-top: 1px solid var(--line); color: var(--muted); font-size: .52rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+
+@media (max-width: 1180px) {
+  .admin-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-metric { border-bottom: 1px solid var(--line); }
+  .admin-metric:nth-child(2n) { border-right: 0; }
+  .admin-metric:nth-last-child(-n+2) { border-bottom: 0; }
+  .admin-columns, .admin-columns-lower { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 980px) {
+  .admin-nav { display: none; }
+  .admin-menu-toggle { display: block; }
+  .admin-mobile-panel { position: absolute; inset: 100% 0 auto; z-index: 60; padding: 1rem clamp(1.25rem, 3vw, 3rem) 1.6rem; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 24px 44px rgba(0, 0, 0, .14); }
+  .admin-mobile-panel > a { display: flex; align-items: baseline; justify-content: space-between; padding: .85rem 0; border-bottom: 1px solid var(--line); color: var(--ink); font-family: "Bodoni Moda", serif; font-size: 1.5rem; }
+  .admin-mobile-panel > a span { color: var(--gold); font-size: .7rem; }
+  .admin-mobile-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 1.1rem; }
+  .admin-mobile-foot a, .admin-mobile-foot button { color: var(--muted); font-size: .58rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+}
+
+@media (max-width: 540px) {
+  .admin-ticker { padding-inline: .6rem; font-size: .48rem; }
+  .admin-mastrow { min-height: 4.4rem; gap: 1rem; }
+  .admin-brand-desk, .admin-viewsite, .admin-signout { display: none; }
+  .admin-brand img { width: 2.1rem; height: 2.1rem; }
+  .admin-wordmark { font-size: .9rem; }
+  .admin-page-head { align-items: flex-start; flex-direction: column; }
+  .admin-page-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+  .admin-metrics { grid-template-columns: 1fr 1fr; }
+  .admin-metric { padding: 1.1rem 1rem; }
+  .admin-metric > strong { font-size: 1.7rem; }
+  .admin-card-head { align-items: stretch; flex-direction: column; gap: .9rem; }
+  .admin-card-head .admin-count { align-self: flex-start; }
+  .admin-segmented button { padding-inline: .4rem; }
+  .admin-segmented { width: 100%; }
+  .admin-segmented button { flex: 1; }
+  .admin-table th, .admin-table td { padding-inline: 1rem; }
+  .admin-chart { height: 13.5rem; gap: .7rem; padding: 1.2rem 1rem .9rem; }
+  .admin-arrivals article { grid-template-columns: 2.9rem 1fr; }
+  .admin-arrivals article .admin-status { grid-column: 2; }
+}
