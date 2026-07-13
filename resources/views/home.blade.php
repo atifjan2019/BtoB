@@ -64,12 +64,33 @@
   </div>
 </section>
 
-<section class="visit-strip">
-  <div class="site-container visit-grid">
-    <p class="section-number">04 / Visit</p>
-    <h2 class="display-serif">Your table<br><em>is waiting.</em></h2>
-    <div><p>Unit 5, Market Square<br>Royton, Oldham OL2 5QD</p><p>Open daily<br>Lunch &amp; dinner</p></div>
-    <a href="{{ route('reserve') }}" class="circle-link" aria-label="Reserve a table">Reserve<br>a table <span>↗</span></a>
+<section class="visit-strip" id="visit">
+  <div class="site-container visit-shell">
+    <div class="visit-topline">
+      <p class="section-number">04 / Come and see us</p>
+      <p>Royton · Greater Manchester</p>
+    </div>
+    <div class="visit-main">
+      <div class="visit-heading">
+        <span>Dinner begins here</span>
+        <h2 class="display-serif">Your table<br><em>is waiting.</em></h2>
+      </div>
+      <div class="visit-details">
+        <div>
+          <span>Find us</span>
+          <p>Unit 5, Market Square<br>Royton, Oldham OL2 5QD</p>
+          <a href="{{ route('contact') }}">Get directions ↗</a>
+        </div>
+        <div>
+          <span>Opening hours</span>
+          <p>Monday–Thursday · 5–11pm<br>Friday–Saturday · 12pm–midnight<br>Sunday · 12–10pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="visit-action-row">
+      <p>Good food. Good company.<br>Nothing rushed.</p>
+      <a href="{{ route('reserve') }}" class="visit-reserve">Reserve a table <span>↗</span></a>
+    </div>
   </div>
 </section>
 @endsection
