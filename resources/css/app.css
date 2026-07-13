@@ -1485,3 +1485,102 @@ body::before { opacity: .045; mix-blend-mode: soft-light; }
   .signature-card > div { border-top-width: 2px; }
   .page-hero::before { left: auto; right: 1.5rem; }
 }
+
+/* Logo-derived palette: walnut, bronze, antique gold and warm ivory */
+:root,
+[data-theme="btob"] {
+  --paper: #160d08;
+  --paper-deep: #21140c;
+  --ink: #f4e4c3;
+  --muted: #b9a58d;
+  --wine: #dca33d;
+  --wine-dark: #b67a23;
+  --gold: #dca33d;
+  --line: rgba(244, 228, 195, .16);
+  --electric: #7a4822;
+  --hot: #9f6227;
+  --color-base-100: #160d08;
+  --color-base-200: #21140c;
+  --color-base-300: #352116;
+  --color-base-content: #f4e4c3;
+  --color-primary: #dca33d;
+  --color-primary-content: #170d08;
+  --color-secondary: #9f6227;
+  --color-neutral: #0d0805;
+  --color-neutral-content: #f4e4c3;
+}
+
+[data-theme="btob-light"] {
+  --paper: #f3e8d2;
+  --paper-deep: #e7d7ba;
+  --ink: #2a170d;
+  --muted: #715c48;
+  --wine: #8f551f;
+  --wine-dark: #693a17;
+  --gold: #b67822;
+  --line: rgba(42, 23, 13, .18);
+  --electric: #9c6a38;
+  --hot: #8f551f;
+  --color-base-100: #f3e8d2;
+  --color-base-200: #e7d7ba;
+  --color-base-300: #d5bf9b;
+  --color-base-content: #2a170d;
+  --color-primary: #8f551f;
+  --color-primary-content: #fff8e9;
+  --color-secondary: #b67822;
+  --color-neutral: #1b100a;
+  --color-neutral-content: #f4e4c3;
+}
+
+body {
+  background:
+    radial-gradient(circle at 82% 8%, color-mix(in srgb, var(--gold) 8%, transparent), transparent 26rem),
+    var(--paper);
+}
+.announcement { color: #211108; }
+.announcement-star { color: #704016; }
+.nav-brand img { filter: saturate(1.04) drop-shadow(0 0 14px rgba(220,163,61,.14)); }
+.btn-primary, .btn-primary:hover { color: #1b0e07; }
+.home-hero { background: #120a06; }
+.hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(18,9,5,.95) 0%, rgba(18,9,5,.74) 43%, rgba(18,9,5,.12) 78%),
+    linear-gradient(0deg, rgba(18,9,5,.76), transparent 50%);
+}
+.home-hero::before { -webkit-text-stroke-color: rgba(220,163,61,.24); }
+.hero-lede { border-left-color: var(--gold); color: rgba(244,228,195,.74); }
+.hero-note { background: rgba(43,24,13,.76); }
+.intro-section::after,
+.signature-card span,
+.page-hero::before { color: var(--gold); }
+.signature-section {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--gold) 7%, transparent), transparent 42%),
+    var(--paper-deep);
+}
+.signature-card figure { background: #2a190f; }
+.craft-image::after,
+.visit-strip,
+.footer-marquee { color: #1b0e07; }
+.craft-copy { background: #2b170d; }
+.craft-copy .section-number,
+.craft-quote,
+.craft-copy h2 em,
+.craft-stats strong { color: #dca33d; }
+.craft-stats { border-color: rgba(220,163,61,.3); }
+.visit-strip::before { -webkit-text-stroke-color: rgba(27,14,7,.18); }
+.visit-strip .section-number,
+.visit-grid h2 em { color: #633814; }
+.visit-grid > div p { color: rgba(27,14,7,.7); }
+.circle-link { color: #1b0e07; border-color: #1b0e07; }
+.circle-link:hover { color: #f4e4c3; background: #1b0e07; }
+.page-hero {
+  background:
+    radial-gradient(circle at 82% 50%, color-mix(in srgb, var(--gold) 13%, transparent), transparent 22rem),
+    var(--paper-deep);
+}
+.surface-panel,
+.dish-card { background: color-mix(in srgb, var(--paper-deep) 94%, var(--gold) 6%); }
+.badge-primary { color: #1b0e07; }
+.site-footer { background: #0c0704; }
+.footer-marquee span { color: #704016; }
