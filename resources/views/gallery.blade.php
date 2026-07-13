@@ -1,12 +1,17 @@
 @extends('layouts.app')
 @section('title', 'Gallery — Bombay to Britain')
 @section('content')
-<div class="site-container py-20 min-h-screen">
-  <div class="text-center mb-16">
-    <p class="tracking-widest uppercase text-primary text-xs mb-4">A Look Inside</p>
-    <h1 class="text-6xl font-light" style="font-family:'Cormorant Garamond',serif">Gallery</h1>
+<div class="page-hero">
+  <div class="site-container">
+    <div class="text-center">
+      <p class="section-kicker mb-4">A Look Inside</p>
+      <h1 class="display-serif text-6xl font-light">Scenes from the table</h1>
+      <p class="text-sm font-light text-base-content/60 mt-4 max-w-md leading-relaxed">The plates, the room, and the moments between courses.</p>
+    </div>
   </div>
-  <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+</div>
+<div class="site-container py-16 min-h-screen">
+  <div class="gallery-grid grid grid-cols-2 lg:grid-cols-3 gap-4">
     @foreach([
       ['1559528896-c5310744cce8','Signature dish','col-span-2 row-span-2',1000,600],
       ['1414235077428-338989a2e8c0','Dining room','',900,300],
@@ -16,10 +21,10 @@
       ['1504674900247-0877df9cc836','Spread','',700,300],
       ['1517248135467-4c7edcad34c4','Ambience','col-span-2',1200,300],
     ] as [$img,$label,$span,$w,$h])
-    <div class="{{ $span }} overflow-hidden rounded-lg border border-base-300 group" style="height:{{ $h }}px">
+    <figure class="{{ $span }} overflow-hidden border border-base-300 group" style="height:{{ $h }}px">
       <img src="https://images.unsplash.com/photo-{{ $img }}?fm=jpg&q=80&w={{ $w }}&auto=format&fit=crop"
            alt="{{ $label }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-    </div>
+    </figure>
     @endforeach
   </div>
 </div>
